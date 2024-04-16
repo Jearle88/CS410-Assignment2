@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Animator m_Animator;
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
+    public AudioSource collect_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
@@ -71,9 +72,12 @@ public class PlayerMovement : MonoBehaviour
         // Check if the object the player collided with has the "PickUp" tag.
         if (other.gameObject.CompareTag("Kid"))
         {
+            // Plays audio when picked up
+            collect_AudioSource.Play();
+
             // Deactivate the collided object (making it disappear).
             other.gameObject.SetActive(false);
-
+            
             // Increment the count of "Kid" objects collected.
             count = count + 1;
         }
