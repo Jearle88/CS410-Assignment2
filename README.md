@@ -7,5 +7,6 @@ Members: Jasob Bube (dot product)
 Dot Product: Added "Kids" that you have to pick up and save before you leave. There are 4.
 You can't leave unless you collect all 4. Dot proudct is used so that the kids always face the player.
          
-Sound effect: Added a sound effect that plays when the game starts
-Audio Source: https://pixabay.com/sound-effects/game-start-6104/ 
+Sound effect: Added sound effects to the start of the game and for collecting pickups.
+Audio Source: https://pixabay.com/sound-effects/game-start-6104/ (game start)
+              https://pixabay.com/sound-effects/coin-c-02-102844/ (collect)
