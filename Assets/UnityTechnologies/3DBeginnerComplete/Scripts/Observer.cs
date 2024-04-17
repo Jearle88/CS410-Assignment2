@@ -6,6 +6,8 @@ public class Observer : MonoBehaviour
 {
     public Transform player;
     public GameEnding gameEnding;
+    public GameObject Gargoyels;
+     private Vector3 _angles;
 
     bool m_IsPlayerInRange;
 
@@ -27,8 +29,17 @@ public class Observer : MonoBehaviour
 
     void Update ()
     {
+
+        
         if (m_IsPlayerInRange)
         {
+            float maxSpeed = 5.0f;
+        float minSpeed = 1.0f;
+        float alpha = 1.0f; // normalized to [0.0, 1.0] scale
+        float interpolatedSpeed = (1.0f - alpha) * minSpeed + alpha * maxSpeed;
+
+        transform.Rotate (_angles * interpolatedSpeed * Time.deltaTime);
+
             Vector3 direction = player.position - transform.position + Vector3.up;
             Ray ray = new Ray(transform.position, direction);
             RaycastHit raycastHit;
@@ -41,5 +52,7 @@ public class Observer : MonoBehaviour
                 }
             }
         }
+        
     }
+    
 }

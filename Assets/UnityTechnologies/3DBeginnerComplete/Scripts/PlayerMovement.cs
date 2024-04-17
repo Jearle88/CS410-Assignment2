@@ -19,6 +19,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
+    Vector3 startpos;
+    Vector3 endpos;
+
+    public float speed = 1.0F;
+    private float journeyLength;
+
+     private float startTime;
+
     void Start ()
     {
         m_Animator = GetComponent<Animator> ();
@@ -59,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation (desiredForward);
+
     }
 
     void OnAnimatorMove ()
@@ -82,4 +91,27 @@ public class PlayerMovement : MonoBehaviour
             count = count + 1;
         }
     }
+    /*private void Update()
+    {
+
+       //first get start and end pos
+        // end pos will be 2 units forward
+        //use lerp to dash across the distance
+       startpos=GetComponent<Rigidbody>().transform.position;
+       endpos=startpos;
+       endpos.x=endpos.x+10f; 
+      int dash_count=1;
+    
+    journeyLength= Vector3.Distance(startpos,endpos);
+      if(Input.GetKeyDown(KeyCode.Space) )
+      {
+         //if(dash_count>0){
+            startTime=Time.time;
+             float distCovered = (Time.time - startTime) * speed;
+              float fractionOfJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(startpos, endpos, fractionOfJourney);
+         //}  
+      }
+}
+} */
 }
